@@ -1,29 +1,34 @@
 input.onButtonPressed(Button.A, function () {
-    if (led_x > 0) {
-        led.unplot(led_x, 0)
-        led_x += -1
-        led.plot(led_x, 0)
+    if (X > 0) {
+        led.unplot(X, Y)
+        X += -1
+    } else if (X < 0 && Y == 0) {
+        Y = 4
+        Y = 4
     } else {
-        led.unplot(led_x, led_y)
-        led_x = 4
-        led_y += -1
+        led.unplot(X, Y)
+        X = 4
+        Y += -1
     }
 })
 input.onButtonPressed(Button.B, function () {
-    if (led_x < 4) {
-        led.unplot(led_x, led_y)
-        led_x += 1
+    if (X < 4) {
+        led.unplot(X, Y)
+        X += 1
+    } else if (X < 4 && Y == 4) {
+        X = 0
+        Y = 0
     } else {
-        led.unplot(led_x, led_y)
-        led_x = 0
-        led_y += 1
+        led.unplot(X, Y)
+        X = 0
+        Y += 1
     }
 })
-let led_y = 0
-let led_x = 0
-led_x = 0
-led.plot(led_x, 0)
-led_y = 0
+let Y = 0
+let X = 0
+X = 0
+led.plot(X, 0)
+Y = 0
 basic.forever(function () {
-    led.plot(led_x, led_y)
+    led.plot(X, Y)
 })
